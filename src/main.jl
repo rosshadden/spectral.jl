@@ -1,9 +1,8 @@
 import JSON
 
 out_file = "./data/out.json"
-grid_name = "kekw me enjoy"
 
-function get_grid(grids)
+function get_grid(grids, grid_name)
 	for grid in grids
 		if grid["config_name"] == grid_name
 			return grid
@@ -32,10 +31,10 @@ function build(source)
 	return grid
 end
 
-function main(in_file)
+function main(in_file, grid_name)
 	json = JSON.parsefile(in_file)
 
-	source = get_grid(json["configs"])
+	source = get_grid(json["configs"], grid_name)
 	grid = build(source)
 
 	open(out_file, "w") do f
@@ -43,4 +42,4 @@ function main(in_file)
 	end
 end
 
-main(ARGS[1])
+main(ARGS[1], ARGS[2])
