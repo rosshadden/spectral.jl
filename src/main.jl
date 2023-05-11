@@ -1,6 +1,5 @@
 import JSON
 
-in_file = "./data/in.json"
 out_file = "./data/out.json"
 grid_name = "kekw me enjoy"
 
@@ -23,7 +22,7 @@ function build(source)
 		push!(grid["categories"], Dict(
 			"name" => section["category_name"],
 			"nameType" => 0,
-			"bigger" => true,
+			"bigger" => false,
 			"wide" => 1,
 			"mark" => "",
 			"heroes" => section["hero_ids"],
@@ -33,7 +32,7 @@ function build(source)
 	return grid
 end
 
-function main()
+function main(in_file)
 	json = JSON.parsefile(in_file)
 
 	source = get_grid(json["configs"])
@@ -44,4 +43,4 @@ function main()
 	end
 end
 
-main()
+main(ARGS[1])
