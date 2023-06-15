@@ -1,6 +1,6 @@
 import JSON
 
-out_file = "./data/out.json"
+out_file = Base.@__DIR__() * "/../data/out.json"
 
 function get_grid(grids, grid_name)
 	for grid in grids
